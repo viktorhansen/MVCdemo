@@ -1,0 +1,31 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model MVCViewsDemo.Models.ViewModels.CreateCarViewModel
+@{ViewData["Title"] = "Create";}
+<div class="jumbotron">
+    <h1 style="text-align: center;">Add Car</h1>
+</div>
+<div class="container">
+    <form asp-controller="Cars" asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Brand"></label>
+            <input asp-for="Brand" class="form-control" />
+            <span asp-validation-for="Brand" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Doors"></label>
+            <input asp-for="Doors" class="form-control" />
+            <span asp-validation-for="Doors" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TopSpeed"></label>
+            <input asp-for="TopSpeed" class="form-control" />
+            <span asp-validation-for="TopSpeed" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-lg btn-success" value="Submit">Submit!</button>
+    </form>
+</div>
+
+@section Script{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}

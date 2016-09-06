@@ -1,0 +1,33 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model MVCViewsDemo.Models.ViewModels.ListCarViewModel[]
+<div class="jumbotron">
+    <h1 style="text-align:center;">My awesome list of cars</h1>
+</div>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Is it fast</th>
+                <th>Update Car Info</th>
+                <th>Delete Car</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Brand</td>
+                    <td> @(item.ShowAsFast ? "WROOOOOM!" : "Nope")</td>
+                    <td><a href="/cars/update/@item.Id" class="btn btn-warning btn-md">Update</a></td>
+                    <td>
+                        <form asp-action="delete" asp-controller="cars" asp-route-id="@item.Id">
+                            <input type="submit" class="btn btn-danger btn-md" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/cars/create" class="btn btn-success btn-lg">Add new car</a>
+</div>
